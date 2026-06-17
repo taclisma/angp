@@ -41,8 +41,8 @@ func TestUnit_NewCanvas(t *testing.T) {
 
 func TestUnit_NewCanvas_InvalidSize(t *testing.T) {
 	tests := []struct {
-		name   string
-		w, h   int
+		name string
+		w, h int
 	}{
 		{"zero width", 0, 100},
 		{"negative width", -1, 100},
@@ -149,9 +149,9 @@ func TestUnit_Save(t *testing.T) {
 	c.BeginStroke(canvas.Point{X: 32, Y: 32})
 
 	path := filepath.Join(dir, "out.png")
-	f, err := os.Create(path)
+	f, err := os.Create(path) //nolint:gosec // test file uses t.TempDir()
 	require.NoError(t, err)
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	require.NoError(t, c.Save(f))
 
