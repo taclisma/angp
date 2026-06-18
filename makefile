@@ -20,7 +20,8 @@ vuln:
 	govulncheck ./...
 
 build:
-	go build -o angp ./cmd/angp
+	mkdir -p out
+	go build -o out/angp ./cmd/angp 
 
 release-dry:
 	goreleaser release --snapshot --clean
