@@ -21,3 +21,6 @@ vuln:
 
 build:
 	go build -o angp ./cmd/angp
+
+release-dry:
+	goreleaser release --snapshot --clean

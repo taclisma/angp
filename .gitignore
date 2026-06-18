@@ -1,4 +1,5 @@
 angp
 *.out
+dist/
 dev.md
 todo.md
